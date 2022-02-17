@@ -12,7 +12,7 @@ podTemplate(containers: [
 			claimName: 'maven-repo-storage', 
 			readOnly: false
 		)
-	[
+	]
 ) {
 	node(POD_LABEL) {
 		stage('Get a Maven project') {
