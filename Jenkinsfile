@@ -4,6 +4,13 @@ podTemplate(containers: [
 		image: 'gradle:6.3-jdk14', command: 'sleep',
 		args: '30d'
 		),
+	],
+	volumes: [
+		persistentVolumeClaim(
+			mountPath: '/var/jenkins_home',
+			claimName: 'jenkins-pv-claim', 
+			readOnly: false
+		)
 	]
 ) {
 	node(POD_LABEL) {
