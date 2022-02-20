@@ -4,13 +4,6 @@ podTemplate(containers: [
 		image: 'gradle:6.3-jdk14', command: 'sleep',
 		args: '30d'
 		),
-	],
-	volumes: [
-		persistentVolumeClaim(
-			mountPath: '/var/jenkins_home',
-			claimName: 'jenkins-pv-claim', 
-			readOnly: false
-		)
 	]
 ) {
 	node(POD_LABEL) {
@@ -27,14 +20,12 @@ podTemplate(containers: [
 						sh '''
 						pwd
 						cd Chapter08/sample1
-						mkdir -p build/reports
 						./gradlew jacocoTestCoverageVerification
 						./gradlew jacocoTestReport
 						'''
 					} catch (Exception E) {
 						sh '''
 						cd Chapter08/sample1
-						mkdir -p build/reports
 						echo 'Failure detected'
 						./gradlew jacocoTestReport
 						'''
