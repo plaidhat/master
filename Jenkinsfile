@@ -47,6 +47,7 @@ podTemplate(containers: [
 						./gradlew jacocoTestReport
 						'''
 					} catch (Exception E) {
+						sh '''
 						cd Chapter08/sample1
 						echo 'Failure detected'
 						./gradlew jacocoTestReport
