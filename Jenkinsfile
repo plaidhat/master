@@ -12,7 +12,9 @@ podTemplate(containers: [
 			container('gradle') {
 				stage('Build a gradle project') {
 					sh '''
-					cd Chapter08/sample1 chmod +x gradlew ./gradlew test
+					cd Chapter08/sample1
+					chmod +x gradlew
+					./gradlew test
 					'''
 				}
 				stage("Code coverage") {
